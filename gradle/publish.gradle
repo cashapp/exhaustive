@@ -10,6 +10,12 @@ mavenPublish {
   }
 }
 
+signing {
+  def signingKey = findProperty('signingKey')
+  def signingPassword = ''
+  useInMemoryPgpKeys(signingKey, signingPassword)
+}
+
 if (project.plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")) {
   apply plugin: 'org.jetbrains.dokka'
 
