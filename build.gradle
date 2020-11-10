@@ -1,0 +1,66 @@
+buildscript {
+  ext.versions = [
+      'kotlin': '1.4.10',
+      'autoService': '1.0-rc7',
+  ]
+
+  ext.deps = [
+      'kotlin': [
+          'embeddableCompiler': "org.jetbrains.kotlin:kotlin-compiler-embeddable:${versions.kotlin}",
+          'gradlePlugin' : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+          'gradlePluginApi': "org.jetbrains.kotlin:kotlin-gradle-plugin-api:${versions.kotlin}",
+      ],
+      'autoService': [
+          'annotations': "com.google.auto.service:auto-service-annotations:${versions.autoService}",
+          'compiler': "com.google.auto.service:auto-service:${versions.autoService}",
+      ],
+      'kotlinCompileTesting': 'com.github.tschuchortdev:kotlin-compile-testing:1.3.1',
+      'junit': 'junit:junit:4.13.1',
+      'truth': 'com.google.truth:truth:1.1',
+  ]
+
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+    classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.1.0'
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.13.0'
+    classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.0'
+  }
+
+  repositories {
+    mavenCentral()
+    jcenter()
+    gradlePluginPortal()
+  }
+}
+
+apply plugin: 'com.diffplug.spotless'
+spotless {
+  kotlin {
+    ktlint('0.39.0').userData([
+      // TODO this should all come from editorconfig https://github.com/diffplug/spotless/issues/142
+      'indent_size': '2',
+      'kotlin_imports_layout': 'ascii',
+    ])
+    target('**/*.kt')
+  }
+}
+
+subprojects {
+  group = GROUP
+  version = VERSION_NAME
+
+  repositories {
+    mavenCentral()
+    jcenter()
+  }
+
+  plugins.withId('org.jetbrains.kotlin.jvm') {
+    compileKotlin {
+      kotlinOptions {
+        freeCompilerArgs = [
+            "-progressive",
+        ]
+      }
+    }
+  }
+}

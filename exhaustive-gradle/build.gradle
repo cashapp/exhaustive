@@ -1,0 +1,54 @@
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'java-gradle-plugin'
+apply from: "$rootDir/gradle/publish.gradle"
+
+dependencies {
+  compileOnly gradleApi()
+  compileOnly deps.kotlin.gradlePlugin
+
+  testImplementation deps.junit
+  testImplementation deps.truth
+  testImplementation gradleTestKit()
+}
+
+gradlePlugin {
+  plugins {
+    exhaustive {
+      id = "app.cash.exhaustive"
+      displayName = "Exhaustive When"
+      description = "Annotation for enforcing exhaustive when in statement form"
+      implementationClass = "app.cash.exhaustive.gradle.ExhaustivePlugin"
+    }
+  }
+}
+
+test {
+  dependsOn(':exhaustive-annotation:installArchives')
+  dependsOn(':exhaustive-compiler:installArchives')
+  dependsOn(':exhaustive-gradle:installArchives')
+}
+
+def versionDirectory = "$buildDir/generated/version/"
+
+sourceSets {
+  main.java.srcDir versionDirectory
+}
+
+task pluginVersion {
+  def outputDir = file(versionDirectory)
+
+  inputs.property 'version', project.version
+  outputs.dir outputDir
+
+  doLast {
+    def versionFile = file("$outputDir/app/cash/exhaustive/gradle/version.kt")
+    versionFile.parentFile.mkdirs()
+    versionFile.text = """// Generated file. Do not edit!
+package app.cash.exhaustive.gradle
+
+internal const val exhaustiveVersion = "${project.version}"
+"""
+  }
+}
+
+tasks.getByName('compileKotlin').dependsOn('pluginVersion')

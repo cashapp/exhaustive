@@ -1,0 +1,16 @@
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'org.jetbrains.kotlin.kapt'
+apply from: "$rootDir/gradle/publish.gradle"
+
+dependencies {
+  compileOnly deps.kotlin.embeddableCompiler
+  testImplementation deps.kotlin.embeddableCompiler
+
+  kapt deps.autoService.compiler
+  compileOnly deps.autoService.annotations
+
+  testImplementation deps.junit
+  testImplementation deps.truth
+  testImplementation deps.kotlinCompileTesting
+  testImplementation project(':exhaustive-annotation')
+}

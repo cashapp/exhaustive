@@ -1,0 +1,5 @@
+rootProject.name = 'exhaustive'
+
+include ':exhaustive-annotation'
+include ':exhaustive-compiler'
+include ':exhaustive-gradle'
