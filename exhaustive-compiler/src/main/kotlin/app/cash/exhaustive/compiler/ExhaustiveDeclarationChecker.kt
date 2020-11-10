@@ -55,8 +55,9 @@ internal object ExhaustiveDeclarationChecker : DeclarationChecker {
       return
     }
 
-    if (!WhenChecker.isWhenExhaustive(whenExpression, trace)) {
-      trace.report(NOT_EXHAUSTIVE.on(whenExpression))
+    val missingCases = WhenChecker.getMissingCases(whenExpression, trace.bindingContext)
+    if (missingCases.isNotEmpty()) {
+      trace.report(NOT_EXHAUSTIVE.on(whenExpression, missingCases))
     }
   }
 }

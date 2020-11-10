@@ -43,7 +43,14 @@ class ExhaustiveCompilerTest {
     )
 
     assertThat(result.exitCode).isEqualTo(COMPILATION_ERROR)
-    assertThat(result.messages).contains("@Exhaustive when is not exhaustive")
+    assertThat(result.messages).contains(
+      """
+      |@Exhaustive when is not exhaustive!
+      |
+      |Missing branches:
+      |- false
+      """.trimMargin()
+    )
   }
 
   @Test fun booleanElseFailsToCompile() {
@@ -104,7 +111,14 @@ class ExhaustiveCompilerTest {
     )
 
     assertThat(result.exitCode).isEqualTo(COMPILATION_ERROR)
-    assertThat(result.messages).contains("@Exhaustive when is not exhaustive")
+    assertThat(result.messages).contains(
+      """
+      |@Exhaustive when is not exhaustive!
+      |
+      |Missing branches:
+      |- RouletteColor.Green
+      """.trimMargin()
+    )
   }
 
   @Test fun enumElseFailsToCompile() {
@@ -176,7 +190,14 @@ class ExhaustiveCompilerTest {
     )
 
     assertThat(result.exitCode).isEqualTo(COMPILATION_ERROR)
-    assertThat(result.messages).contains("@Exhaustive when is not exhaustive")
+    assertThat(result.messages).contains(
+      """
+      |@Exhaustive when is not exhaustive!
+      |
+      |Missing branches:
+      |- RouletteColor.Green
+      """.trimMargin()
+    )
   }
 
   @Test fun sealedClassElseFailsToCompile() {

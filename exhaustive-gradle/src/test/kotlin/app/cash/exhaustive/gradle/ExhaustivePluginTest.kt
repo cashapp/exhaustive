@@ -22,7 +22,14 @@ class ExhaustivePluginTest {
       )
       .buildAndFail()
     assertThat(result.output).contains("BUILD FAILED")
-    assertThat(result.output).contains("Example.kt: (9, 3): @Exhaustive when is not exhaustive")
+    assertThat(result.output).contains(
+      """
+      |Example.kt: (9, 3): @Exhaustive when is not exhaustive!
+      |
+      |Missing branches:
+      |- RouletteColor.Green
+      """.trimMargin()
+    )
   }
 
   @Test fun jvmTest() {
@@ -37,6 +44,13 @@ class ExhaustivePluginTest {
       )
       .buildAndFail()
     assertThat(result.output).contains("BUILD FAILED")
-    assertThat(result.output).contains("ExampleTest.kt: (9, 3): @Exhaustive when is not exhaustive")
+    assertThat(result.output).contains(
+      """
+      |ExampleTest.kt: (9, 3): @Exhaustive when is not exhaustive!
+      |
+      |Missing branches:
+      |- RouletteColor.Green
+      """.trimMargin()
+    )
   }
 }

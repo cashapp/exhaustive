@@ -16,6 +16,9 @@ fun printColor(color: RouletteColor) {
 ```
 ```
 e: Example.kt:5: @Exhaustive when is not exhaustive!
+
+Missing branches:
+- RouletteColor.Green
 ```
 
 No more assigning to dummy local properties or referencing pointless functions or properties to
@@ -51,7 +54,7 @@ sealed class RouletteColor {
   object Green : RouletteColor()
 }
 
-fun subject(value: RouletteColor) {
+fun printColor(value: RouletteColor) {
   @Exhaustive
   when (value) {
     RouletteColor.Red -> println("red")
@@ -61,6 +64,9 @@ fun subject(value: RouletteColor) {
 ```
 ```
 e: Example.kt:9: @Exhaustive when is not exhaustive!
+
+Missing branches:
+- RouletteColor.Green
 ```
 
 Vote for [youtrack.jetbrains.com/issue/KT-12380](https://youtrack.jetbrains.com/issue/KT-12380)
