@@ -86,7 +86,7 @@ buildscript {
   }
 }
 
-apply plugin: 'org.jetbrains.kotlin.jvm' // or .android or .multiplatform
+apply plugin: 'org.jetbrains.kotlin.jvm' // or .android or .multiplatform or .js
 apply plugin: 'app.cash.exhaustive'
 ```
 
