@@ -1,0 +1,32 @@
+buildscript {
+  dependencies {
+    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10'
+    classpath 'com.android.tools.build:gradle:4.1.0'
+    classpath "app.cash.exhaustive:exhaustive-gradle:${exhaustiveVersion}"
+  }
+  repositories {
+    maven {
+      url "file://${projectDir.absolutePath}/../../../../../build/localMaven"
+    }
+    mavenCentral()
+    google()
+    jcenter()
+  }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'app.cash.exhaustive'
+
+android {
+  compileSdkVersion 30
+}
+
+repositories {
+  maven {
+    url "file://${projectDir.absolutePath}/../../../../../build/localMaven"
+  }
+  mavenCentral()
+  google()
+  jcenter()
+}

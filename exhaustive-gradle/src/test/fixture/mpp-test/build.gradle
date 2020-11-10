@@ -1,0 +1,26 @@
+buildscript {
+  dependencies {
+    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10'
+    classpath "app.cash.exhaustive:exhaustive-gradle:${exhaustiveVersion}"
+  }
+  repositories {
+    maven {
+      url "file://${projectDir.absolutePath}/../../../../../build/localMaven"
+    }
+    mavenCentral()
+  }
+}
+
+apply plugin: 'org.jetbrains.kotlin.multiplatform'
+apply plugin: 'app.cash.exhaustive'
+
+repositories {
+  maven {
+    url "file://${projectDir.absolutePath}/../../../../../build/localMaven"
+  }
+  mavenCentral()
+}
+
+kotlin {
+  jvm()
+}
