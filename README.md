@@ -8,7 +8,7 @@ enum class RouletteColor { Red, Black, Green }
 
 fun printColor(color: RouletteColor) {
   @Exhaustive
-  when (subject) {
+  when (color) {
     Red -> println("red")
     Black -> println("black")
   }
@@ -31,7 +31,7 @@ an `else` branch.
 ```kotlin
 fun printColor(color: RouletteColor) {
   @Exhaustive
-  when (subject) {
+  when (color) {
     Red -> println("red")
     Black -> println("black")
     else -> println("green")
