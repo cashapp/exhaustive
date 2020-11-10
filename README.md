@@ -100,7 +100,7 @@ be shipped as a dependency of the module.
 ```groovy
 buildscript {
   dependencies {
-    classpath 'app.cash.exhaustive:exhaustive-gradle:0.1.0-SNAPSHOT'
+    classpath 'app.cash.exhaustive:exhaustive-gradle:0.2.0-SNAPSHOT'
   }
   repositories {
     maven {
