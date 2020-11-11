@@ -1,5 +1,4 @@
-Exhaustive
-==========
+# Exhaustive
 
 An annotation and Kotlin compiler plugin for enforcing a `when` statement is exhaustive.
 
@@ -54,9 +53,9 @@ sealed class RouletteColor {
   object Green : RouletteColor()
 }
 
-fun printColor(value: RouletteColor) {
+fun printColor(color: RouletteColor) {
   @Exhaustive
-  when (value) {
+  when (color) {
     RouletteColor.Red -> println("red")
     RouletteColor.Black -> println("black")
   }
@@ -73,8 +72,7 @@ Vote for [youtrack.jetbrains.com/issue/KT-12380](https://youtrack.jetbrains.com/
 to see this added to the Kotlin language (with a better syntax).
 
 
-Usage
------
+## Usage
 
 ```groovy
 buildscript {
@@ -116,8 +114,128 @@ buildscript {
 </details>
 
 
-License
-=======
+## Alternatives Considered
+
+In the weeks prior to building this project a set of alternatives were explored and rejected
+for various reasons. They are listed below. If you evaluate their merits differently, you are
+welcome to use them instead. The solution provided by this plugin is not perfect either.
+
+### Unused local and warning suppression
+
+```kotlin
+fun printColor(color: RouletteColor) {
+  @Suppress("UNUSED_VARIABLE")
+  val exhaustive = when (color) {
+    RouletteColor.Red -> println("red")
+    RouletteColor.Black -> println("black")
+  }
+}
+```
+
+Pros:
+ - Works everywhere without library or plugin
+ - No overhead or impact on compiled code
+
+Neutral:
+ - Somewhat self-describing as to the intent, assuming good local property names
+ - Good locality as the exhaustiveness forcing is very close to the `when` keyword, although
+   somewhat overshadowed by the warning suppression
+
+Cons:
+ - Requires suppression of warning which need to be put into a shared template or
+   requires alt+enter,enter-ing to create the final form
+ - Requires the use of _unique_ local property names (`_` is not allowed here)
+
+### Built-in trailing property or function call
+
+```kotlin
+fun printColor(color: RouletteColor) {
+  when (color) {
+    RouletteColor.Red -> println("red")
+    RouletteColor.Black -> println("black")
+  }.javaClass // or .hashCode() or anything else...
+}
+```
+
+Pros:
+ - Works everywhere without library or plugin
+
+Cons:
+ - Not self-describing as to the effect on the `when` and the developer intent behind adding it
+ - Poor locality as the property is far away from the `when` keyword it modifies
+ - Impact on compiled code in the form of a property call, function call, and/or additional
+   instructions at the call-site
+
+### Library trailing property
+
+```kotlin
+@Suppress("unused") // Receiver reference forces when into expression form.
+inline val Any?.exhaustive get() = Unit
+
+fun printColor(color: RouletteColor) {
+  when (color) {
+    RouletteColor.Red -> println("red")
+    RouletteColor.Black -> println("black")
+  }.exhaustive
+}
+```
+
+Pros:
+ - Self-describing effect on the `when`
+ - No impact on compiled code
+
+Cons:
+ - Requires a library
+ - Poor locality as the property is far away from the `when` keyword it modifies
+ - Pollutes the extension namespace by showing up for everything, not just `when`
+
+### Library leading expression
+
+```kotlin
+object exhaustive {
+  inline operator fun minus(other: Any?) = Unit
+}
+
+fun printColor(color: RouletteColor) {
+  exhaustive-when (color) {
+    RouletteColor.Red -> println("red")
+    RouletteColor.Black -> println("black")
+  }
+}
+```
+
+Pro:
+ - Great locality as the syntactical trick appears almost like a soft keyword modifying the `when`
+
+Neutral:
+ - Slight impact on compiled code (which could be mitigated on Android with an embedded R8 rule)
+
+Cons:
+ - Requires a library
+ - Feels too clever
+ - Code formatting will insert a space before and after the minus sign breaking the effect
+
+### Use soft keyword in compiler
+
+```kotlin
+fun printColor(color: RouletteColor) {
+  sealed when (color) {
+    RouletteColor.Red -> println("red")
+    RouletteColor.Black -> println("black")
+  }
+}
+```
+
+Pros:
+ - Great locality as a soft keyword directly modifying the `when`
+ - No impact on compiled code
+ - Part of the actual language
+
+Cons:
+ - Requires forking the compiler and IDE plugin which is an overwhelming long-term commitment!!!
+
+
+# License
 
     Copyright 2020 Square, Inc.
 
