@@ -77,7 +77,7 @@ to see this added to the Kotlin language (with a better syntax).
 ```groovy
 buildscript {
   dependencies {
-    classpath 'app.cash.exhaustive:exhaustive-gradle:0.1.0'
+    classpath 'app.cash.exhaustive:exhaustive-gradle:0.1.1'
   }
   repositories {
     mavenCentral()
