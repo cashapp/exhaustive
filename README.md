@@ -91,6 +91,16 @@ apply plugin: 'app.cash.exhaustive'
 The `@Exhaustive` annotation will be made available in your main and test source sets but will not
 be shipped as a dependency of the module.
 
+Since Kotlin compiler plugins are an unstable API, certain versions of Exhaustive only work with
+certain versions of Kotlin.
+
+| Kotlin          | Exhaustive |
+|-----------------|------------|
+| 1.4.10 - 1.4.20 | 0.1.1      |
+
+Versions of Kotlin older than 1.4.10 are not supported.
+Versions newer than those listed may be supported but are untested.
+
 <details>
 <summary>Snapshots of the development version are available in Sonatype's snapshots repository.</summary>
 <p>
