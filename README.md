@@ -96,7 +96,7 @@ certain versions of Kotlin.
 
 | Kotlin          | Exhaustive |
 |-----------------|------------|
-| 1.4.10 - 1.4.20 | 0.1.1      |
+| 1.4.10 - 1.5.0  | 0.1.1      |
 
 Versions of Kotlin older than 1.4.10 are not supported.
 Versions newer than those listed may be supported but are untested.
