@@ -1,6 +1,8 @@
 buildscript {
+  apply from: '../../../../../gradle/dependencies.gradle'
+
   dependencies {
-    classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.0'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
     classpath "app.cash.exhaustive:exhaustive-gradle:${exhaustiveVersion}"
   }
   repositories {
