@@ -51,7 +51,7 @@ class ExhaustivePluginTest(
       |Example.kt: (9, 3): @Exhaustive when is not exhaustive!
       |
       |Missing branches:
-      |- RouletteColor.Green
+      |- com.example.RouletteColor.Green
       """.trimMargin()
     )
   }

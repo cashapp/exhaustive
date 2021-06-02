@@ -3,12 +3,12 @@ package app.cash.exhaustive.compiler
 import app.cash.exhaustive.compiler.ExhaustiveErrors.INVALID_ELSE_BRANCH
 import app.cash.exhaustive.compiler.ExhaustiveErrors.NOT_EXHAUSTIVE
 import app.cash.exhaustive.compiler.ExhaustiveErrors.WHEN_SUBJECT_REQUIRED
-import org.jetbrains.kotlin.cfg.WhenMissingCase
 import org.jetbrains.kotlin.com.intellij.psi.PsiElement
 import org.jetbrains.kotlin.diagnostics.DiagnosticFactory0
 import org.jetbrains.kotlin.diagnostics.DiagnosticFactory1
 import org.jetbrains.kotlin.diagnostics.Errors
 import org.jetbrains.kotlin.diagnostics.Severity.ERROR
+import org.jetbrains.kotlin.diagnostics.WhenMissingCase
 import org.jetbrains.kotlin.diagnostics.rendering.DefaultErrorMessages
 import org.jetbrains.kotlin.diagnostics.rendering.DiagnosticFactoryToRendererMap
 import org.jetbrains.kotlin.diagnostics.rendering.MultiRenderer
