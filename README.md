@@ -157,14 +157,14 @@ Cons:
    requires alt+enter,enter-ing to create the final form
  - Requires the use of _unique_ local property names (`_` is not allowed here)
 
-### Built-in trailing property or function call
+### Built-in trailing inline function call
 
 ```kotlin
 fun printColor(color: RouletteColor) {
   when (color) {
     RouletteColor.Red -> println("red")
     RouletteColor.Black -> println("black")
-  }.javaClass // or .hashCode() or anything else...
+  }.apply{} // or let, also
 }
 ```
 
@@ -174,8 +174,6 @@ Pros:
 Cons:
  - Not self-describing as to the effect on the `when` and the developer intent behind adding it
  - Poor locality as the property is far away from the `when` keyword it modifies
- - Impact on compiled code in the form of a property call, function call, and/or additional
-   instructions at the call-site
 
 ### Library trailing property
 
