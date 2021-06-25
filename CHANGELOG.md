@@ -2,9 +2,13 @@
 
 ## [Unreleased]
 
+
+
+## [0.2.0]
+
 Fixes:
 
- * Support for Kotlin 1.5.20-M1
+ * Support for Kotlin 1.5.20
 
 
 ## [0.2.0-M1]
@@ -26,7 +30,8 @@ Fixes:
 Initial release.
 
 
-[Unreleased]: https://github.com/cashapp/exhaustive/compare/0.1.1...HEAD
+[Unreleased]: https://github.com/cashapp/exhaustive/compare/0.2.0...HEAD
+[0.2.0]: https://github.com/cashapp/exhaustive/releases/tag/0.2.0
 [0.2.0-M1]: https://github.com/cashapp/exhaustive/releases/tag/0.2.0-M1
 [0.1.1]: https://github.com/cashapp/exhaustive/releases/tag/0.1.1
 [0.1.0]: https://github.com/cashapp/exhaustive/releases/tag/0.1.0

@@ -77,7 +77,7 @@ to see this added to the Kotlin language (with a better syntax).
 ```groovy
 buildscript {
   dependencies {
-    classpath 'app.cash.exhaustive:exhaustive-gradle:0.1.1'
+    classpath 'app.cash.exhaustive:exhaustive-gradle:0.2.0'
   }
   repositories {
     mavenCentral()
@@ -97,7 +97,7 @@ certain versions of Kotlin.
 | Kotlin          | Exhaustive |
 |-----------------|------------|
 | 1.4.10 - 1.5.10 | 0.1.1      |
-| 1.5.20-M1       | 0.2.0-M1   |
+| 1.5.20          | 0.2.0      |
 
 Versions of Kotlin older than 1.4.10 are not supported.
 Versions newer than those listed may be supported but are untested.
@@ -109,7 +109,7 @@ Versions newer than those listed may be supported but are untested.
 ```groovy
 buildscript {
   dependencies {
-    classpath 'app.cash.exhaustive:exhaustive-gradle:0.2.0-SNAPSHOT'
+    classpath 'app.cash.exhaustive:exhaustive-gradle:0.3.0-SNAPSHOT'
   }
   repositories {
     maven {
