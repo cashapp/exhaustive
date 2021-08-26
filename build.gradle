@@ -3,14 +3,13 @@ buildscript {
 
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-    classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.1.0'
+    classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.14.3'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
     classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.0'
   }
 
   repositories {
     mavenCentral()
-    jcenter()
     gradlePluginPortal()
   }
 }
@@ -33,7 +32,6 @@ subprojects {
 
   repositories {
     mavenCentral()
-    jcenter()
   }
 
   tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
