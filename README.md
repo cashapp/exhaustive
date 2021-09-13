@@ -73,8 +73,8 @@ Missing branches:
 
 ## Soft Deprecated
 
-We did it! Kotlin 1.7 will make all `when` statements exhaustive by default (where possible) and
-this plugin will no longer be required.
+We did it! Kotlin 1.7 [will make](https://youtrack.jetbrains.com/issue/KT-47709) all `when`
+statements exhaustive by default (where possible) and this plugin will no longer be required.
 
 In order to change the language behavior, Kotlin 1.6 will first warn when a `when` statement is not
 exhaustive. Kotlin 1.5.30 ships with this warning as opt-in behavior by setting your
