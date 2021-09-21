@@ -1,6 +1,6 @@
 buildscript {
   ext.versions = [
-    'kotlin': '1.5.30',
+    'kotlin': '1.5.31',
     'autoService': '1.0',
   ]
 
@@ -14,7 +14,7 @@ buildscript {
       'annotations': "com.google.auto.service:auto-service-annotations:${versions.autoService}",
       'compiler': "com.google.auto.service:auto-service:${versions.autoService}",
     ],
-    'kotlinCompileTesting': 'com.github.tschuchortdev:kotlin-compile-testing:1.4.3',
+    'kotlinCompileTesting': 'com.github.tschuchortdev:kotlin-compile-testing:1.4.4',
     'junit': 'junit:junit:4.13.2',
     'truth': 'com.google.truth:truth:1.1.3',
   ]

@@ -1,9 +1,11 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 buildscript {
   apply from: 'gradle/dependencies.gradle'
 
   dependencies {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
-    classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.14.3'
+    classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.15.1'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
     classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.0'
   }
@@ -34,7 +36,7 @@ subprojects {
     mavenCentral()
   }
 
-  tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+  tasks.withType(KotlinCompile).configureEach {
     kotlinOptions {
       jvmTarget = "1.8"
     }
