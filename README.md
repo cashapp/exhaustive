@@ -132,7 +132,7 @@ certain versions of Kotlin.
 | Kotlin          | Exhaustive |
 |-----------------|------------|
 | 1.4.10 - 1.5.10 | 0.1.1      |
-| 1.5.20 - 1.5.30 | 0.2.0      |
+| 1.5.20 - 1.5.31 | 0.2.0      |
 
 Versions of Kotlin older than 1.4.10 are not supported.
 Versions newer than those listed may be supported but are untested.
