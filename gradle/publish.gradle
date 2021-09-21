@@ -19,8 +19,7 @@ signing {
 if (project.plugins.hasPlugin("org.jetbrains.kotlin.multiplatform")) {
   apply plugin: 'org.jetbrains.dokka'
 
-  dokka {
-    outputDirectory = "$buildDir/dokka"
-    outputFormat = 'html'
+  dokkaHtml {
+    outputDirectory = new File("$buildDir/dokka")
   }
 }

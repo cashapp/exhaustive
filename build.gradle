@@ -7,7 +7,7 @@ buildscript {
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
     classpath 'com.diffplug.spotless:spotless-plugin-gradle:5.15.1'
     classpath 'com.vanniktech:gradle-maven-publish-plugin:0.14.2'
-    classpath 'org.jetbrains.dokka:dokka-gradle-plugin:0.10.0'
+    classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.5.30'
   }
 
   repositories {
