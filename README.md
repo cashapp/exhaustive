@@ -1,8 +1,13 @@
 # Exhaustive
 
+**WARNING:** This plugin is deprecated!
+
+Kotlin 1.7 [made](https://youtrack.jetbrains.com/issue/KT-47709) all `when` statements exhaustive by default and this plugin is no longer required.
+
+---
+
 An annotation and Kotlin compiler plugin for enforcing a `when` statement is exhaustive.
 
-**Note:** This plugin is reaching its end-of-life and is soft deprecated. [Learn more](#soft-deprecated).
 
 ```kotlin
 enum class RouletteColor { Red, Black, Green }
@@ -69,42 +74,6 @@ e: Example.kt:9: @Exhaustive when is not exhaustive!
 Missing branches:
 - RouletteColor.Green
 ```
-
-
-## Soft Deprecated
-
-We did it! Kotlin 1.7 [will make](https://youtrack.jetbrains.com/issue/KT-47709) all `when`
-statements exhaustive by default (where possible) and this plugin will no longer be required.
-
-In order to change the language behavior, Kotlin 1.6 will first warn when a `when` statement is not
-exhaustive. Kotlin 1.5.30 ships with this warning as opt-in behavior by setting your
-`languageVersion` to 1.6.
-
-```groovy
-kotlin {
-  sourceSets.all {
-    languageSettings {
-      languageVersion = '1.6'
-    }
-  }
-}
-```
-
-If you want to opt-in to errors instead of warnings, enable progressive mode.
-
-```groovy
-kotlin {
-  sourceSets.all {
-    languageSettings {
-      languageVersion = '1.6'
-      progressiveMode = true
-    }
-  }
-}
-```
-
-This plugin will continue to be maintained until Kotlin 1.7.0 is released for those who cannot
-enable these in their builds.
 
 
 ## Usage
